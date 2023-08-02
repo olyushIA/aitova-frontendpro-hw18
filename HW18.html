@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+
+    // Дано масив з елементами різних типів. 
+    // Створити функцію яка вираховує середнє арифметичне лише числових елементів даного масиву.  
+        {
+        function calculateNumericAverage(arr) {
+            let sum = 0;
+            let count = 0;
+
+            for (const element of arr) {
+                if (typeof element === 'number' && !isNaN(element)) {
+                    sum += element;
+                    count++;
+                }
+            }
+
+            if (count === 0) {
+                return 0; // Якщо немає числових елементів, повертаємо 0, щоб уникнути ділення на 0.
+            }
+
+            return sum / count;
+        }
+
+        const array = [1, 2, 'a', 3, 'b', null, NaN, 4, 5];
+        console.log (calculateNumericAverage(array));
+        }
+
+        //Написати функцію doMath(x, znak, y), яка отримує 3 аргументи: числа x і y, рядок znak. 
+        //У змінній znak може бути: +, -, *, /, %, ^ (ступінь ).
+        //Вивести результат математичної дії, вказаної в змінній znak.
+        //Обидва числа і знак виходять від користувача.
+        {
+        function doMath(x, znak, y) {
+            let result;
+            switch (znak) {
+                case '+':
+                    result = x + y;
+                    break;
+                case '-':
+                    result = x - y;
+                    break;
+                case '*':
+                    result = x * y;
+                    break;
+                case '/':
+                    result = x / y;
+                    break;
+                case '%':
+                    result = x % y;
+                    break;
+                case '^':
+                    result = Math.pow(x, y);
+                    break;
+                default:
+                    return "Невідомий оператор";
+            }
+            return result;
+        }
+
+        const x = +prompt("Введіть перше число:");
+        const znak = prompt("Введіть операцію (+, -, *, /, %, ^):");
+        const y = +prompt("Введіть друге число:");
+
+        const result = doMath (x, znak, y);
+        console.log (`Результат: ${result}`);
+        }
+
+    // Написати функцію заповнення даними користувача двомірного масиву. 
+    // Довжину основного масиву і внутрішніх масивів задає користувач. 
+    // Значення всіх елементів всіх масивів задає користувач.
+        {
+        function create2DArray() {
+            const rows = +prompt("Введіть кількість рядків у двовимірному масиві:");
+            const cols = +prompt("Введіть кількість стовпців у двовимірному масиві:");
+  
+            const array = [];
+
+            for (let i = 0; i < rows; i++) {
+                const rowValues = prompt(`Введіть значення для рядка ${i + 1}, розділені пробілами:`);
+                const values = rowValues.split(' ');
+                array.push(values);
+                }
+            return array;
+            }
+
+            console.log(create2DArray());
+        }
+
+    // Створити функцію, яка прибирає з рядка всі символи, які ми передали другим аргументом. 
+    // 'func(" hello world", ['l', 'd'])' поверне нам "heo wor". 
+    // Вихідний рядок та символи для видалення задає користувач.
+        {        
+        function removeCharacters(inputString, charactersToRemove) {
+            // функція використовує пошук і заміну за допомогою регулярного виразу
+            const regex = new RegExp(`[${charactersToRemove.join('')}]`, 'g');
+            return inputString.replace(regex, '');
+        }
+
+        const inputString = prompt("Введіть рядок:");
+        const charactersToRemove = prompt("Введіть символи для видалення, розділені пробілами:").split(' ');
+    
+        console.log(removeCharacters(inputString, charactersToRemove));
+        }
+        
+    </script>
+</body>
+</html>
